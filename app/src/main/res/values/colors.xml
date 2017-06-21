@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2DA8A8</color>
+    <color name="colorPrimaryDark">#268F8F</color>
+    <color name="colorAccent">#F56042</color>
+    <color name="colorGrey">#696969</color>
+    <color name="colorBlack">#101010</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorTextDarkGray">#9A9A9A</color>
+    <color name="colorTextGray">#878787</color>
+    <color name="colorGrayEmpty">#EEEEEE</color>
+
+    <color name="light_grey">#F7F7F7</color>
+    <color name="san_juan">#455A64</color>
+</resources>

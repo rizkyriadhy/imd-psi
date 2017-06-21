@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_map"
+            android:icon="@drawable/ic_place_white_24dp"
+            android:title="PSI Map" />
+        <item
+            android:id="@+id/nav_24hr_psi"
+            android:icon="@drawable/ic_action_trending_up"
+            android:title="24-hr PSI" />
+    </group>
+
+</menu>

@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">IMDGlobal PSI</string>
+    <string name="google_api_key">AIzaSyCnIatcI97QIiCjpGxvxf2VWoFHmebELic</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="please_wait">Please wait...</string>
+    <string name="text_ok">OK</string>
+    <string name="sp_desc">IMD Global present Pollutant Standards Index (PSI) of Singapore</string>
+
+    <string name="error">Oops&#8230;</string>
+    <string name="error_emulator">Your device detect as emulator/rooted phone</string>
+    <string name="error_no_data_received">No data received. Please try again later</string>
+    <string name="error_something">Dang! This should not be happening. Please contact us at support@movieapp.com</string>
+    <string name="error_failed_data">Failed retrieving data. Please try again later</string>
+    <string name="error_no_connection">No connection found. Please check your wifi or cellular data settings</string>
+    <string name="error_no_data_found">No data found</string>
+    <string name="error_cannot_load">Can\'t Load Content. \nCheck your internet connection</string>
+    <string name="error_permission">Some Permission is Denied</string>
+    <string name="error_something_wrong">Something wrong</string>
+
+    <string name="permission_grant">You need to grant access to </string>
+    <string name="permission_location">Location</string>
+    <string name="permission_storage">Storage</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="permission_must">IMD Global PSI must have location and storage permission to run</string>
+
+</resources>
