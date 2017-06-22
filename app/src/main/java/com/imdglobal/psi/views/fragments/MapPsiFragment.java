@@ -2,7 +2,10 @@ package com.imdglobal.psi.views.fragments;
 
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +15,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -26,16 +30,20 @@ import com.imdglobal.psi.views.adapters.PopupAdapter;
  */
 
 public class MapPsiFragment extends Fragment implements OnMapReadyCallback {
-    private MapFragment mapFragment;
+    private SupportMapFragment mapFragment;
     private GoogleMap map;
-    private boolean isLoading;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_location, container, false);
-        mapFragment = (MapFragment) getActivity().getFragmentManager().findFragmentById(R.id.f_map_location);
-        mapFragment.getMapAsync(this);
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.f_map_location);
+        mapFragment.getMapAsync(this);
     }
 
     @Override
@@ -82,7 +90,7 @@ public class MapPsiFragment extends Fragment implements OnMapReadyCallback {
                             .position(destination)
                             .title("Singapore "+d.getName()+", readings :")
                             .snippet(snippet);
-                    map.addMarker(destinationMarker).showInfoWindow();
+                    map.addMarker(destinationMarker);
 
                 } else if (d.getName().equals("west")) {
                     String snippet = "";
@@ -104,7 +112,7 @@ public class MapPsiFragment extends Fragment implements OnMapReadyCallback {
                             .position(destination)
                             .title("Singapore "+d.getName()+", readings :")
                             .snippet(snippet);
-                    map.addMarker(destinationMarker).showInfoWindow();
+                    map.addMarker(destinationMarker);
 
                 } else if (d.getName().equals("north")) {
 
@@ -127,7 +135,7 @@ public class MapPsiFragment extends Fragment implements OnMapReadyCallback {
                             .position(destination)
                             .title("Singapore "+d.getName()+", readings :")
                             .snippet(snippet);
-                    map.addMarker(destinationMarker).showInfoWindow();
+                    map.addMarker(destinationMarker);
                 } else if (d.getName().equals("east")) {
 
                     String snippet = "";
@@ -149,7 +157,7 @@ public class MapPsiFragment extends Fragment implements OnMapReadyCallback {
                             .position(destination)
                             .title("Singapore "+d.getName()+", readings :")
                             .snippet(snippet);
-                    map.addMarker(destinationMarker).showInfoWindow();
+                    map.addMarker(destinationMarker);
 
                 } else if (d.getName().equals("south")) {
 
@@ -172,7 +180,7 @@ public class MapPsiFragment extends Fragment implements OnMapReadyCallback {
                             .position(destination)
                             .title("Singapore "+d.getName()+", readings :")
                             .snippet(snippet);
-                    map.addMarker(destinationMarker).showInfoWindow();
+                    map.addMarker(destinationMarker);
 
                 }
                 map.setInfoWindowAdapter(new PopupAdapter(getActivity().getLayoutInflater()));
@@ -181,26 +189,15 @@ public class MapPsiFragment extends Fragment implements OnMapReadyCallback {
                     map.animateCamera(CameraUpdateFactory.newLatLngZoom(destination, 10.0f), 5000, null);
             }
     }
-//
-//    private void loadData() {
-//        if (isAdded()) {
-//            isLoading = true;
-//            final ProgressDialog progressDialog = ProgressDialog.show(getContext(), "", getString(R.string.please_wait));
-//            PsiByDates.Request request = new PsiByDates.Request(URLEncoder.encode("2017-06-12"));
-//            ImdGlobalPSI.getInstance(getContext()).getPsiByDates(request, new Callback<PsiByDates.Response>() {
-//                @Override
-//                public void onSuccess(int code, PsiByDates.Response body) {
-//                    isLoading = false;
-//                    progressDialog.dismiss();
-//                }
-//
-//                @Override
-//                public void onFailed(int code, String message) {
-//                    isLoading = false;
-//                    progressDialog.dismiss();
-//                    Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
-//                }
-//            });
+
+//    @Override
+//    public void onDestroyView() {
+//        super.onDestroyView();
+//        Fragment fragment = (getFragmentManager().findFragmentById(R.id.f_map_location));
+//        if (fragment != null){
+//            getActivity().getSupportFragmentManager().beginTransaction()
+//                    .remove(fragment)
+//                    .commit();
 //        }
 //    }
 }
