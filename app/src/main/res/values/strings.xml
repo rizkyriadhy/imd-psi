@@ -8,6 +8,7 @@
     <string name="please_wait">Please wait...</string>
     <string name="text_ok">OK</string>
     <string name="sp_desc">IMD Global present Pollutant Standards Index (PSI) of Singapore</string>
+    <string name="text_title_statistic">Overall and regional PSI data for 24-hr PSI</string>
 
     <string name="error">Oops&#8230;</string>
     <string name="error_emulator">Your device detect as emulator/rooted phone</string>

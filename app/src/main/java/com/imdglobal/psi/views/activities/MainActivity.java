@@ -16,6 +16,7 @@ import android.widget.FrameLayout;
 import com.imdglobal.psi.R;
 import com.imdglobal.psi.views.fragments.MapPsiFragment;
 import com.imdglobal.psi.views.fragments.DefaultFragment;
+import com.imdglobal.psi.views.fragments.StatisticFragment;
 
 /**
  * Created by rizkyriadhy on 19/06/17.
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity
     private NavigationView navigationView;
 
     private Fragment fragmentMap;
-    private Fragment fragmentDefault;
+    private Fragment fragmentStatistic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity
 
     private void initData(){
         fragmentMap = new MapPsiFragment();
-        fragmentDefault = new DefaultFragment();
+        fragmentStatistic = new StatisticFragment();
 
         getSupportFragmentManager()
                 .beginTransaction()
@@ -88,7 +89,7 @@ public class MainActivity extends AppCompatActivity
             switchContent(fragmentMap);
             setTitle("PSI Map");
         } else if (id == R.id.nav_24hr_psi) {
-            switchContent(fragmentDefault);
+            switchContent(fragmentStatistic);
             setTitle("24-hr PSI");
         }
 

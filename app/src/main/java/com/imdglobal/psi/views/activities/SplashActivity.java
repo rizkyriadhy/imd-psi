@@ -22,7 +22,10 @@ import com.imdglobal.psi.api.rest.data.PsiByDates;
 import com.imdglobal.psi.utils.UtilImdGlobal;
 
 import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -160,6 +163,11 @@ public class SplashActivity extends Activity {
     }
 
     private void initFirst() {
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat dfTime = new SimpleDateFormat("hh:mm:ss");
+        String date = df.format(new Date());
+        String time = dfTime.format(new Date());
+
         PsiByDates.Request request = new PsiByDates.Request("2017-06-12");
         ImdGlobalPSI.getInstance(context).getPsiByDates(request, new Callback<PsiByDates.Response>() {
             @Override
