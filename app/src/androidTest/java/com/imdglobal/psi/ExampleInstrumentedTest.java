@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.android.movieapp", appContext.getPackageName());
+        assertEquals("com.imdglobal.psi", appContext.getPackageName());
     }
 }

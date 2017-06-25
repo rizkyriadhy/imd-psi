@@ -7,11 +7,11 @@ import com.imdglobal.psi.utils.ImdGlobalPSISession;
  * Created by rizkyriadhy on 19/06/17.
  */
 public class EndPoint {
-    private static final String PRODUCTION_DOMAIN = "https://api.data.gov.sg/";
-    private static final String DEVELOPMENT_DOMAIN = "https://api.data.gov.sg/";
-    private static final String STAGING_DOMAIN = "https://api.data.gov.sg/";
-    private static final String VERSION = "v1/";
-    private static final String ENVIRONMENT = "environment/";
+    public static String PRODUCTION_DOMAIN = "https://api.data.gov.sg/";
+    public static String DEVELOPMENT_DOMAIN = "https://api.data.gov.sg/";
+    public static String STAGING_DOMAIN = "https://api.data.gov.sg/";
+    public static String VERSION = "v1/";
+    public static String ENVIRONMENT = "environment/";
 
     public final static String psi = "psi";
 
