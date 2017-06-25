@@ -18,6 +18,10 @@ import com.imdglobal.psi.views.fragments.MapPsiFragment;
 import com.imdglobal.psi.views.fragments.DefaultFragment;
 import com.imdglobal.psi.views.fragments.StatisticFragment;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by rizkyriadhy on 19/06/17.
  */
@@ -33,6 +37,8 @@ public class MainActivity extends AppCompatActivity
     private Fragment fragmentMap;
     private Fragment fragmentStatistic;
 
+    private String date;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,9 +49,12 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void declareView(){
+        DateFormat df = new SimpleDateFormat("dd MMM yyyy");
+        date = df.format(new Date());
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setTitle("PSI Map");
+        setTitle("PSI Map for "+date);
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -87,10 +96,10 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_map) {
             switchContent(fragmentMap);
-            setTitle("PSI Map");
+            setTitle("PSI Map for "+date);
         } else if (id == R.id.nav_24hr_psi) {
             switchContent(fragmentStatistic);
-            setTitle("24-hr PSI");
+            setTitle("24-hr PSI for "+date);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

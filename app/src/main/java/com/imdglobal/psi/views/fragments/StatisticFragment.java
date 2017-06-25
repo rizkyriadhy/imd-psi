@@ -118,12 +118,12 @@ public class StatisticFragment extends Fragment implements OnChartValueSelectedL
             String time = getDate("hh:mm:ss", psiByDate.getItems().get(i).getTimestamp().substring(11, 19), "KK a");
             arrayTime.add(time);
 
-            float psiCentral = psiByDate.getItems().get(i).getReadings().getPsiTwentyFourHourly().getCentral();
-            float psiNorth = psiByDate.getItems().get(i).getReadings().getPsiTwentyFourHourly().getNorth();
-            float psiWest = psiByDate.getItems().get(i).getReadings().getPsiTwentyFourHourly().getWest();
-            float psiSouth = psiByDate.getItems().get(i).getReadings().getPsiTwentyFourHourly().getSouth();
-            float psiEast = psiByDate.getItems().get(i).getReadings().getPsiTwentyFourHourly().getEast();
-            float psiNational = psiByDate.getItems().get(i).getReadings().getPsiTwentyFourHourly().getNational();
+            float psiCentral = (float) psiByDate.getItems().get(i).getReadings().getPsiTwentyFourHourly().getCentral();
+            float psiNorth = (float) psiByDate.getItems().get(i).getReadings().getPsiTwentyFourHourly().getNorth();
+            float psiWest = (float) psiByDate.getItems().get(i).getReadings().getPsiTwentyFourHourly().getWest();
+            float psiSouth = (float) psiByDate.getItems().get(i).getReadings().getPsiTwentyFourHourly().getSouth();
+            float psiEast = (float) psiByDate.getItems().get(i).getReadings().getPsiTwentyFourHourly().getEast();
+            float psiNational = (float) psiByDate.getItems().get(i).getReadings().getPsiTwentyFourHourly().getNational();
 
             arrayCentral.add(new Entry(i, psiCentral));
             arrayNorth.add(new Entry(i, psiNorth));

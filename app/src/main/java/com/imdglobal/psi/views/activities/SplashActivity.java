@@ -165,17 +165,17 @@ public class SplashActivity extends Activity {
     private void initFirst() {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         DateFormat dfTime = new SimpleDateFormat("hh:mm:ss");
-        String date = df.format(new Date());
-        String time = dfTime.format(new Date());
+        final String date = df.format(new Date());
+        final String time = dfTime.format(new Date());
 
-        PsiByDates.Request request = new PsiByDates.Request("2017-06-12");
+        PsiByDates.Request request = new PsiByDates.Request(date);
         ImdGlobalPSI.getInstance(context).getPsiByDates(request, new Callback<PsiByDates.Response>() {
             @Override
             public void onSuccess(int code, PsiByDates.Response body) {
                 ImdGlobalPSILocalData.savePsiDate(body);
 
                 try {
-                    PsiByDates.Request request = new PsiByDates.Request("2017-06-12T08:00:00");
+                    PsiByDates.Request request = new PsiByDates.Request(date+"T"+time);
                     ImdGlobalPSI.getInstance(context).getPsiByDateTimes(request, new Callback<PsiByDates.Response>() {
                         @Override
                         public void onSuccess(int code, PsiByDates.Response body) {
