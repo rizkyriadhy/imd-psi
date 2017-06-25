@@ -11,68 +11,68 @@ public class No2OneHourMax {
 
 @SerializedName("east")
 @Expose
-private int east;
+private double east;
 @SerializedName("central")
 @Expose
-private int central;
+private double central;
 @SerializedName("south")
 @Expose
-private int south;
+private double south;
 @SerializedName("north")
 @Expose
-private int north;
+private double north;
 @SerializedName("west")
 @Expose
-private int west;
+private double west;
 @SerializedName("national")
 @Expose
-private int national;
+private double national;
 
-public int getEast() {
+public double getEast() {
 return east;
 }
 
-public void setEast(int east) {
+public void setEast(double east) {
 this.east = east;
 }
 
-public int getCentral() {
+public double getCentral() {
 return central;
 }
 
-public void setCentral(int central) {
+public void setCentral(double central) {
 this.central = central;
 }
 
-public int getSouth() {
+public double getSouth() {
 return south;
 }
 
-public void setSouth(int south) {
+public void setSouth(double south) {
 this.south = south;
 }
 
-public int getNorth() {
+public double getNorth() {
 return north;
 }
 
-public void setNorth(int north) {
+public void setNorth(double north) {
 this.north = north;
 }
 
-public int getWest() {
+public double getWest() {
 return west;
 }
 
-public void setWest(int west) {
+public void setWest(double west) {
 this.west = west;
 }
 
-public int getNational() {
+public double getNational() {
 return national;
 }
 
-public void setNational(int national) {
+public void setNational(double national) {
 this.national = national;
 }
 

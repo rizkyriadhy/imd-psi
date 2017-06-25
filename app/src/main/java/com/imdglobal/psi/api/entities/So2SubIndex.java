@@ -9,71 +9,71 @@ import com.google.gson.annotations.SerializedName;
 
 public class So2SubIndex {
 
-@SerializedName("east")
-@Expose
-private int east;
-@SerializedName("central")
-@Expose
-private int central;
-@SerializedName("south")
-@Expose
-private int south;
-@SerializedName("north")
-@Expose
-private int north;
-@SerializedName("west")
-@Expose
-private int west;
-@SerializedName("national")
-@Expose
-private int national;
+    @SerializedName("east")
+    @Expose
+    private double east;
+    @SerializedName("central")
+    @Expose
+    private double central;
+    @SerializedName("south")
+    @Expose
+    private double south;
+    @SerializedName("north")
+    @Expose
+    private double north;
+    @SerializedName("west")
+    @Expose
+    private double west;
+    @SerializedName("national")
+    @Expose
+    private double national;
 
-public int getEast() {
-return east;
-}
+    public double getEast() {
+        return east;
+    }
 
-public void setEast(int east) {
-this.east = east;
-}
+    public void setEast(double east) {
+        this.east = east;
+    }
 
-public int getCentral() {
-return central;
-}
+    public double getCentral() {
+        return central;
+    }
 
-public void setCentral(int central) {
-this.central = central;
-}
+    public void setCentral(double central) {
+        this.central = central;
+    }
 
-public int getSouth() {
-return south;
-}
+    public double getSouth() {
+        return south;
+    }
 
-public void setSouth(int south) {
-this.south = south;
-}
+    public void setSouth(double south) {
+        this.south = south;
+    }
 
-public int getNorth() {
-return north;
-}
+    public double getNorth() {
+        return north;
+    }
 
-public void setNorth(int north) {
-this.north = north;
-}
+    public void setNorth(double north) {
+        this.north = north;
+    }
 
-public int getWest() {
-return west;
-}
+    public double getWest() {
+        return west;
+    }
 
-public void setWest(int west) {
-this.west = west;
-}
+    public void setWest(double west) {
+        this.west = west;
+    }
 
-public int getNational() {
-return national;
-}
+    public double getNational() {
+        return national;
+    }
 
-public void setNational(int national) {
-this.national = national;
-}
+    public void setNational(double national) {
+        this.national = national;
+    }
 
 }

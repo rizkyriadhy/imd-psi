@@ -18,10 +18,10 @@ public class PsiByDate extends RestResponseBase {
 
     @SerializedName("region_metadata")
     @Expose
-    private ArrayList<RegionMetadatum> regionMetadata = null;
+    private ArrayList<RegionMetadatum> regionMetadata = new ArrayList<>();
     @SerializedName("items")
     @Expose
-    private ArrayList<Item> items = null;
+    private ArrayList<Item> items = new ArrayList<>();
 
     public ArrayList<RegionMetadatum> getRegionMetadata() {
         return regionMetadata;
