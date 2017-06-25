@@ -206,6 +206,10 @@ public class MockPSIDataRestConnect implements RestConnect {
         o3EightHourMax.setWest(9);
         o3EightHourMax.setNational(13);
         readings.setO3EightHourMax(o3EightHourMax);
+
+        items.add(item);
+        psiByDatesResponse.setRegionMetadata(regionMetadata);
+        psiByDatesResponse.setItems(items);
         return delegate.returningResponse(psiByDatesResponse).psiByDates("2017-06-12", ImdGlobalPSIConst.API_KEY);
     }
 
@@ -376,6 +380,10 @@ public class MockPSIDataRestConnect implements RestConnect {
         o3EightHourMax.setWest(9);
         o3EightHourMax.setNational(13);
         readings.setO3EightHourMax(o3EightHourMax);
+
+        items.add(item);
+        psiByDatesResponse.setRegionMetadata(regionMetadata);
+        psiByDatesResponse.setItems(items);
         return delegate.returningResponse(psiByDatesResponse).psiByDateTimes("2017-06-12T08:00:00", ImdGlobalPSIConst.API_KEY);
     }
 }

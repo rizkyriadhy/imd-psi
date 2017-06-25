@@ -12,6 +12,7 @@ import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Window;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.imdglobal.psi.R;
@@ -36,6 +37,7 @@ import java.util.Map;
 public class SplashActivity extends Activity {
 
     private Context context;
+    private TextView txtSplash;
 
     //Permission Marshmallow
     private int REQUEST_PERMISSION_MULTIPLE = 120;
@@ -113,6 +115,7 @@ public class SplashActivity extends Activity {
     }
 
     private void declareView() {
+        txtSplash = (TextView) findViewById(R.id.sp_txt_desc);
     }
 
     private void checkPermission() {
@@ -172,6 +175,7 @@ public class SplashActivity extends Activity {
         ImdGlobalPSI.getInstance(context).getPsiByDates(request, new Callback<PsiByDates.Response>() {
             @Override
             public void onSuccess(int code, PsiByDates.Response body) {
+                txtSplash.setText("Done");
                 ImdGlobalPSILocalData.savePsiDate(body);
 
                 try {
@@ -179,15 +183,14 @@ public class SplashActivity extends Activity {
                     ImdGlobalPSI.getInstance(context).getPsiByDateTimes(request, new Callback<PsiByDates.Response>() {
                         @Override
                         public void onSuccess(int code, PsiByDates.Response body) {
+                            txtSplash.setText("Done");
                             ImdGlobalPSILocalData.savePsiDateTime(body);
-                            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                            startActivity(intent);
-                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                            finish();
+                            goToMain();
                         }
 
                         @Override
                         public void onFailed(int code, String message) {
+                            txtSplash.setText("Failed");
                             new AlertDialog.Builder(context)
                                     .setTitle(R.string.error)
                                     .setMessage(message)
@@ -211,6 +214,7 @@ public class SplashActivity extends Activity {
                     });
                 } catch (Exception e) {
                     e.printStackTrace();
+                    txtSplash.setText("Failed");
                     new AlertDialog.Builder(context)
                             .setTitle(R.string.error)
                             .setMessage(R.string.error_something_wrong)
@@ -235,6 +239,7 @@ public class SplashActivity extends Activity {
 
             @Override
             public void onFailed(int code, String message) {
+                txtSplash.setText("Failed");
                 new AlertDialog.Builder(context)
                         .setTitle(R.string.error)
                         .setMessage(message)
@@ -258,6 +263,13 @@ public class SplashActivity extends Activity {
         });
 
 
+    }
+
+    public void goToMain(){
+        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        finish();
     }
 
     private void checkEmulator() {

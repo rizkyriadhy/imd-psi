@@ -53,13 +53,15 @@ public class PsiDataTest extends InstrumentationTestCase {
         RestConnect mockPSIService = new MockPSIDataRestConnect(delegate);
 
         //Actual Test
-        Call<PsiByDates.Response> psi = mockPSIService.psiByDates("2017-06-12T08:00:00", ImdGlobalPSIConst.API_KEY);
+        Call<PsiByDates.Response> psi = mockPSIService.psiByDateTimes("2017-06-12T08:00:00", ImdGlobalPSIConst.API_KEY);
         Response<PsiByDates.Response> psiDataResponse = psi.execute();
 
         //Asserting response
         Assert.assertTrue(psiDataResponse.isSuccessful());
         Assert.assertNotNull(psiDataResponse.body().getRegionMetadata());
         Assert.assertNotNull(psiDataResponse.body().getItems());
+        Assert.assertNotNull(psiDataResponse.body().getItems().get(0).getTimestamp());
+        Assert.assertEquals(1, psiDataResponse.body().getItems().size());
         Assert.assertEquals("2017-06-12T08:00:00+08:00", psiDataResponse.body().getItems().get(0).getTimestamp());
 
     }
@@ -70,7 +72,7 @@ public class PsiDataTest extends InstrumentationTestCase {
         RestConnect mockPSIService = new MockFailedPSIdataService(delegate);
 
         //Actual Test
-        Call<PsiByDates.Response> psi = mockPSIService.psiByDates("2017-06-12T08:00:0", ImdGlobalPSIConst.API_KEY);
+        Call<PsiByDates.Response> psi = mockPSIService.psiByDateTimes("2017-06-12T08:00:0", ImdGlobalPSIConst.API_KEY);
         Response<PsiByDates.Response> psiDataResponse = psi.execute();
         Assert.assertFalse(psiDataResponse.isSuccessful());
 
@@ -78,7 +80,7 @@ public class PsiDataTest extends InstrumentationTestCase {
         PsiByDates.Response error = errorConverter.convert(psiDataResponse.errorBody());
 
         //Asserting response
-        Assert.assertEquals(404, psiDataResponse.code());
+        Assert.assertEquals(400, psiDataResponse.code());
         Assert.assertEquals("invalid datetime format", error.getMessage());
 
     }

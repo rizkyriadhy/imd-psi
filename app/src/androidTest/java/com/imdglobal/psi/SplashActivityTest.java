@@ -11,7 +11,6 @@ import com.imdglobal.psi.views.activities.SplashActivity;
 import com.squareup.okhttp.mockwebserver.MockResponse;
 import com.squareup.okhttp.mockwebserver.MockWebServer;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -19,10 +18,12 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.intent.Intents.intended;
-import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
+import static android.support.test.espresso.matcher.RootMatchers.withDecorView;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 
 /**
  * Created by rizkyriadhy on 6/25/17.
@@ -57,7 +58,8 @@ public class SplashActivityTest extends InstrumentationTestCase {
         Intent intent = new Intent();
         mActivityRule.launchActivity(intent);
 
-        intended(hasComponent("com.imdglobal.psi.MainActivity"));
+        onView(withId(R.id.sp_txt_desc))
+                .check(matches(withText("Done")));
     }
 
 
@@ -66,18 +68,17 @@ public class SplashActivityTest extends InstrumentationTestCase {
         String fileName = "failed_response.json";
 
         server.enqueue(new MockResponse()
-                .setResponseCode(404)
+                .setResponseCode(400)
                 .setBody(RestServiceTestHelper.getStringFromFile(getInstrumentation().getContext(), fileName)));
 
         Intent intent = new Intent();
         mActivityRule.launchActivity(intent);
 
-        onView(withText("Oops...")).check(matches(isDisplayed()));
-    }
-
-    @After
-    public void tearDown() throws Exception {
-        server.shutdown();
+        onView(withText("Oops…")).
+                inRoot(withDecorView(
+                        not(is(mActivityRule.getActivity().
+                                getWindow().getDecorView())))).
+                check(matches(isDisplayed()));
     }
 
 }
