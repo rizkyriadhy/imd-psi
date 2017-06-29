@@ -39,6 +39,11 @@ public class RestService {
         return env == 0 ? HttpLoggingInterceptor.Level.BODY : HttpLoggingInterceptor.Level.NONE;
     }
 
+    /**
+     * method to get connection without retry
+     *
+     * @return
+     */
     public RestConnect getConnections() {
         if (restConnect == null) {
             client = new OkHttpClient.Builder()
@@ -58,6 +63,11 @@ public class RestService {
         return restConnect;
     }
 
+    /**
+     * method to get connection with retry
+     *
+     * @return
+     */
     public RestConnect getConnectionsWithRetry() {
         if (restConnectWithRetry == null) {
             client = new OkHttpClient.Builder()

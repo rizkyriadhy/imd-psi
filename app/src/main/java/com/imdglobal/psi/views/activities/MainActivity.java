@@ -48,6 +48,9 @@ public class MainActivity extends AppCompatActivity
         initData();
     }
 
+    /**
+     * method for initialize all view on on this activity
+     */
     private void declareView(){
         DateFormat df = new SimpleDateFormat("dd MMM yyyy");
         date = df.format(new Date());
@@ -68,6 +71,9 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    /**
+     * method for initialize data fragment on this activity
+     */
     private void initData(){
         fragmentMap = new MapPsiFragment();
         fragmentStatistic = new StatisticFragment();
@@ -107,6 +113,11 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    /**
+     * method to switch content fragment
+     *
+     * @param fragment
+     */
     public void switchContent(final Fragment fragment) {
         getSupportFragmentManager()
                 .beginTransaction()

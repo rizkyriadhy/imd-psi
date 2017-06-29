@@ -189,15 +189,4 @@ public class MapPsiFragment extends Fragment implements OnMapReadyCallback {
                     map.animateCamera(CameraUpdateFactory.newLatLngZoom(destination, 10.0f), 5000, null);
             }
     }
-
-//    @Override
-//    public void onDestroyView() {
-//        super.onDestroyView();
-//        Fragment fragment = (getFragmentManager().findFragmentById(R.id.f_map_location));
-//        if (fragment != null){
-//            getActivity().getSupportFragmentManager().beginTransaction()
-//                    .remove(fragment)
-//                    .commit();
-//        }
-//    }
 }

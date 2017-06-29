@@ -18,6 +18,13 @@ import com.imdglobal.psi.R;
  */
 public class UtilImdGlobal {
 
+    /**
+     * method to show dialog info without any listener
+     *
+     * @param context
+     * @param title
+     * @param message
+     */
     public static void info(Context context, String title, String message) {
         info(context, title, message, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
@@ -26,6 +33,14 @@ public class UtilImdGlobal {
         });
     }
 
+    /**
+     * method to show dialog info with custom listener
+     *
+     * @param context
+     * @param title
+     * @param message
+     * @param listener
+     */
     public static void info(Context context, String title, String message, DialogInterface.OnClickListener listener) {
         if (context != null && context instanceof Activity && !((Activity) context).isFinishing()) {
             new AlertDialog.Builder(context)
@@ -39,6 +54,14 @@ public class UtilImdGlobal {
         }
     }
 
+    /**
+     * method to show dialog info and cannot be cancelable
+     *
+     * @param context
+     * @param title
+     * @param message
+     * @param listener
+     */
     public static void infoFix(Context context, String title, String message, DialogInterface.OnClickListener listener) {
         if (context != null && context instanceof Activity && !((Activity) context).isFinishing()) {
             new AlertDialog.Builder(context)
@@ -53,6 +76,17 @@ public class UtilImdGlobal {
         }
     }
 
+    /**
+     * method to show dialog with custom selection
+     *
+     * @param context
+     * @param title
+     * @param message
+     * @param positive
+     * @param negative
+     * @param positiveListener
+     * @param negativeListener
+     */
     public static void selection(Context context, String title, String message, String positive, String negative, DialogInterface.OnClickListener positiveListener, DialogInterface.OnClickListener negativeListener) {
         if (context != null && context instanceof Activity && !((Activity) context).isFinishing()) {
             new AlertDialog.Builder(context)
@@ -66,19 +100,41 @@ public class UtilImdGlobal {
         }
     }
 
+    /**
+     * method to convert dp to px
+     * @param dp
+     * @return
+     */
     public static int dpToPx(int dp) {
         return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
     }
 
+    /**
+     * method to convert px to dp
+     * @param px
+     * @return
+     */
     public static int pxToDp(int px) {
         return (int) (px / Resources.getSystem().getDisplayMetrics().density);
     }
 
+    /**
+     * method to check network is connected or no
+     *
+     * @param context
+     * @return
+     */
     public static boolean isNetworkConnected(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         return cm.getActiveNetworkInfo() != null;
     }
 
+    /**
+     * method to close keyboard
+     *
+     * @param activity
+     * @param view
+     */
     public static void closeKeyboard(Activity activity, View view) {
         View focusView = (view == null) ? activity.getCurrentFocus() : view;
         if (focusView != null) {
@@ -87,6 +143,12 @@ public class UtilImdGlobal {
         }
     }
 
+    /**
+     * method to get screen width
+     *
+     * @param context
+     * @return
+     */
     public static int getScreenWidth(Context context) {
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics metrics;

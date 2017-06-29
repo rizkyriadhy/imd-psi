@@ -11,7 +11,7 @@ import com.imdglobal.psi.ImdGlobalPSIApplication;
  */
 public class ImdGlobalPSIDb extends SQLiteOpenHelper {
 
-    public static String DATABASE_NAME = "movieapp.db";
+    public static String DATABASE_NAME = "imdglobal.db";
     public static int DATABASE_VERSION = 2;
 
     private static ImdGlobalPSIDb instance = null;

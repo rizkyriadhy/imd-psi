@@ -15,12 +15,21 @@ public class EndPoint {
 
     public final static String psi = "psi";
 
+    /**
+     * method to get this domain
+     * @return
+     */
     public static String getDomain(){
         return (ImdGlobalPSISession.getSession(ImdGlobalPSISession.SessionName.ACTIVE_ENV).compareToIgnoreCase(ImdGlobalPSIConst.API_ENV_DEVELOPMENT)==0)?
                 DEVELOPMENT_DOMAIN:
                 ((ImdGlobalPSISession.getSession(ImdGlobalPSISession.SessionName.ACTIVE_ENV).compareToIgnoreCase(ImdGlobalPSIConst.API_ENV_STAGING)==0)?STAGING_DOMAIN:PRODUCTION_DOMAIN);
     }
 
+    /**
+     * method to get base uri
+     *
+     * @return
+     */
     public static String getApiBaseUri(){
         return getDomain() + VERSION + ENVIRONMENT;
     }

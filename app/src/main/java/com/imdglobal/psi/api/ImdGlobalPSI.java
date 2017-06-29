@@ -35,6 +35,12 @@ public class ImdGlobalPSI {
         return instance;
     }
 
+    /**
+     * method to call api psi by date
+     *
+     * @param request
+     * @param callback
+     */
     public void getPsiByDates(final PsiByDates.Request request, final Callback<PsiByDates.Response> callback) {
         RestConnect conn = getRestConnect(true);
         Call<PsiByDates.Response> call = conn.psiByDates(
@@ -44,6 +50,12 @@ public class ImdGlobalPSI {
         call.enqueue(callback);
     }
 
+    /**
+     * method to call api psi by date and times
+     *
+     * @param request
+     * @param callback
+     */
     public void getPsiByDateTimes(final PsiByDates.Request request, final Callback<PsiByDates.Response> callback) {
         RestConnect conn = getRestConnect(true);
         Call<PsiByDates.Response> call = conn.psiByDateTimes(
@@ -53,6 +65,12 @@ public class ImdGlobalPSI {
         call.enqueue(callback);
     }
 
+    /**
+     * method to get restconnect retrofit
+     *
+     * @param withRetry
+     * @return
+     */
     private RestConnect getRestConnect(boolean withRetry) {
         if (withRetry)
             return RestService.getInstance(this.context).getConnectionsWithRetry();

@@ -42,6 +42,11 @@ public class SplashActivity extends Activity {
     //Permission Marshmallow
     private int REQUEST_PERMISSION_MULTIPLE = 120;
 
+    /**
+     * function to check device emulator or no
+     *
+     * @return
+     */
     public static boolean isEmulator() {
         return Build.FINGERPRINT.startsWith("generic")
                 || Build.FINGERPRINT.startsWith("unknown")
@@ -53,6 +58,12 @@ public class SplashActivity extends Activity {
                 || "google_sdk".equals(Build.PRODUCT);
     }
 
+    /**
+     * function to check device rooted or no
+     *
+     * @param context
+     * @return
+     */
     public static boolean isRooted(Context context) {
         boolean isEmulator = !isRealDevice(context);
         String buildTags = Build.TAGS;
@@ -69,6 +80,12 @@ public class SplashActivity extends Activity {
         }
     }
 
+    /**
+     * function to check a real device
+     *
+     * @param context
+     * @return
+     */
     public static boolean isRealDevice(Context context) {
         String androidId = android.provider.Settings.Secure.getString(context.getContentResolver(),
                 android.provider.Settings.Secure.ANDROID_ID);
@@ -88,6 +105,14 @@ public class SplashActivity extends Activity {
                 && !manager.getSensorList(Sensor.TYPE_ALL).isEmpty());
     }
 
+    /**
+     * method to show dialog
+     *
+     * @param context
+     * @param message
+     * @param okListener
+     * @param cancelListener
+     */
     public static void showMessageOKCancel(Context context, String message, DialogInterface.OnClickListener okListener, DialogInterface.OnClickListener cancelListener) {
         new AlertDialog.Builder(context)
                 .setMessage(message)
@@ -114,10 +139,16 @@ public class SplashActivity extends Activity {
         super.onDestroy();
     }
 
+    /**
+     * method for initialize all view on on this activity
+     */
     private void declareView() {
         txtSplash = (TextView) findViewById(R.id.sp_txt_desc);
     }
 
+    /**
+     * method for check permission Android M
+     */
     private void checkPermission() {
         if (Build.VERSION.SDK_INT >= 23) {
 
@@ -165,6 +196,9 @@ public class SplashActivity extends Activity {
         initFirst();
     }
 
+    /**
+     * method to initialize data for the first time launch
+     */
     private void initFirst() {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         DateFormat dfTime = new SimpleDateFormat("hh:mm:ss");
@@ -265,6 +299,9 @@ public class SplashActivity extends Activity {
 
     }
 
+    /**
+     * method to change activity to MainActivity
+     */
     public void goToMain(){
         Intent intent = new Intent(SplashActivity.this, MainActivity.class);
         startActivity(intent);
@@ -272,8 +309,11 @@ public class SplashActivity extends Activity {
         finish();
     }
 
+    /**
+     * method to check emulator and continue process data
+     */
     private void checkEmulator() {
-        if (!isRooted(context)) { // its not emulator & not rooted or debug mode
+        if (!isRooted(context)) { // its not emulator & not rooted
             checkPermission();
         } else { // its emulator & rooted
             new AlertDialog.Builder(context)
@@ -283,9 +323,7 @@ public class SplashActivity extends Activity {
                     .setPositiveButton("retry", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            checkEmulator(
-
-                            );
+                            checkEmulator();
                         }
                     })
                     .setNegativeButton("close", new DialogInterface.OnClickListener() {
@@ -300,6 +338,12 @@ public class SplashActivity extends Activity {
         }
     }
 
+    /**
+     * method to add permission list android M
+     * @param permissionsList
+     * @param permission
+     * @return
+     */
     private boolean addPermission(List<String> permissionsList, String permission) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {

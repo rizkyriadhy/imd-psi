@@ -57,10 +57,17 @@ public class StatisticFragment extends Fragment implements OnChartValueSelectedL
         setData();
     }
 
+    /**
+     * method for initialize all view on on this fragment
+     * @param view
+     */
     private void initView(View view) {
         lineChart = (LineChart) view.findViewById(R.id.line_chart);
     }
 
+    /**
+     * method for initialize data
+     */
     private void initData(){
 
         lineChart.setOnChartValueSelectedListener(this);
@@ -75,7 +82,6 @@ public class StatisticFragment extends Fragment implements OnChartValueSelectedL
         lineChart.getXAxis().setDrawGridLines(false);
 
         // no description text
-//        lineChart.setDescription("");
         lineChart.setNoDataText("No data statistic for this psi");
 
         // enable value highlighting
@@ -104,6 +110,9 @@ public class StatisticFragment extends Fragment implements OnChartValueSelectedL
         l.setDrawInside(false);
     }
 
+    /**
+     * methid for set all data to line chart
+     */
     private void setData(){
         PsiByDate psiByDate = ImdGlobalPSILocalData.getPsiDate();
 
@@ -221,7 +230,6 @@ public class StatisticFragment extends Fragment implements OnChartValueSelectedL
 
         int colorText = Color.parseColor("#5f5f5f");
         // modify the legend ...
-        // l.setPosition(LegendPosition.LEFT_OF_CHART);
         l.setForm(Legend.LegendForm.LINE);
         l.setTextColor(colorText);
 
@@ -238,13 +246,6 @@ public class StatisticFragment extends Fragment implements OnChartValueSelectedL
         xAxis.setGranularity(1f); // minimum axis-step (interval) is 1
         xAxis.setValueFormatter(formatter);
 
-//        XLabels xl = lineChart.getXLabels();
-//        xl.setTextColor(colorText);
-//        xl.setPosition(XLabelPosition.BOTTOM);
-//
-//        YLabels yl = lineChart.getYLabels();
-//        yl.setTextColor(colorText);
-
     }
 
     @Override
@@ -257,6 +258,13 @@ public class StatisticFragment extends Fragment implements OnChartValueSelectedL
 
     }
 
+    /**
+     * method to get date with new format
+     * @param dateFormat
+     * @param date
+     * @param toFormat
+     * @return
+     */
     public String getDate(String dateFormat, String date, String toFormat) {
         String formatted = "";
         DateFormat formatter = new SimpleDateFormat(dateFormat);
